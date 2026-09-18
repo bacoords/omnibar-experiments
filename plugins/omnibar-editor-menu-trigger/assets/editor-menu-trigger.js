@@ -1,11 +1,8 @@
 ( function () {
 	'use strict';
 
-	const root = document.documentElement;
 	const settings = window.OmnibarEditorMenuTrigger || {};
 	const slotClass = 'omnibar-editor-menu-trigger-slot';
-	const fallbackSlotClass = 'omnibar-editor-menu-trigger-fallback';
-	const fallbackActiveClass = 'omnibar-editor-menu-trigger-fallback-active';
 	const toggleClass = 'omnibar-editor-menu-trigger';
 	const toggleSelector = `.${ toggleClass }`;
 	let renderFrame = 0;
@@ -90,45 +87,20 @@
 		function ensureToggle() {
 			const header = document.querySelector( '.editor-header' );
 
-			if ( header ) {
-				document.querySelector( `.${ fallbackSlotClass }` )?.remove();
-				root.classList.remove( fallbackActiveClass );
-
-				let slot = header.querySelector( '.editor-header__back-button' );
-
-				if ( ! slot ) {
-					slot = document.createElement( 'div' );
-					slot.className = 'editor-header__back-button';
-					header.insertBefore( slot, header.firstElementChild );
-				}
-
-				slot.classList.add( slotClass );
-				ensureButtonInSlot( slot );
+			if ( ! header ) {
 				return;
 			}
 
-			const siteEditorContent = document.querySelector(
-				'.edit-site-layout__content'
-			);
+			let slot = header.querySelector( '.editor-header__back-button' );
 
-			if ( ! siteEditorContent ) {
-				root.classList.remove( fallbackActiveClass );
-				return;
+			if ( ! slot ) {
+				slot = document.createElement( 'div' );
+				slot.className = 'editor-header__back-button';
+				header.insertBefore( slot, header.firstElementChild );
 			}
 
-			root.classList.add( fallbackActiveClass );
-
-			let fallbackSlot = siteEditorContent.querySelector(
-				`:scope > .${ fallbackSlotClass }`
-			);
-
-			if ( ! fallbackSlot ) {
-				fallbackSlot = document.createElement( 'div' );
-				fallbackSlot.className = fallbackSlotClass;
-				siteEditorContent.prepend( fallbackSlot );
-			}
-
-			ensureButtonInSlot( fallbackSlot );
+			slot.classList.add( slotClass );
+			ensureButtonInSlot( slot );
 		}
 
 		function scheduleToggle() {

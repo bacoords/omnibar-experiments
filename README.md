@@ -6,11 +6,11 @@ Plugin-based experiments for a more focused and flexible WordPress admin navigat
 
 | Experiment | Playground |
 | --- | --- |
-| Admin Drawer | [Launch in WordPress Playground](https://playground.wordpress.net/?blueprint-url=https://raw.githubusercontent.com/bacoords/omnibar-experiments/v0.1.5/blueprints/admin-drawer.json) |
-| Collapsible Menu Groups | [Launch in WordPress Playground](https://playground.wordpress.net/?blueprint-url=https://raw.githubusercontent.com/bacoords/omnibar-experiments/v0.1.5/blueprints/collapsible-menu-groups.json) |
-| Menu Organizer | [Launch in WordPress Playground](https://playground.wordpress.net/?blueprint-url=https://raw.githubusercontent.com/bacoords/omnibar-experiments/v0.1.5/blueprints/menu-organizer.json) |
-| Focus Menu | [Launch in WordPress Playground](https://playground.wordpress.net/?blueprint-url=https://raw.githubusercontent.com/bacoords/omnibar-experiments/v0.1.5/blueprints/focus-menu.json) |
-| Editor Menu Trigger | [Launch in WordPress Playground](https://playground.wordpress.net/?blueprint-url=https://raw.githubusercontent.com/bacoords/omnibar-experiments/v0.1.5/blueprints/editor-menu-trigger.json) |
+| Admin Drawer | [Launch in WordPress Playground](https://playground.wordpress.net/?blueprint-url=https://raw.githubusercontent.com/bacoords/omnibar-experiments/v0.1.6/blueprints/admin-drawer.json) |
+| Collapsible Menu Groups | [Launch in WordPress Playground](https://playground.wordpress.net/?blueprint-url=https://raw.githubusercontent.com/bacoords/omnibar-experiments/v0.1.6/blueprints/collapsible-menu-groups.json) |
+| Menu Organizer | [Launch in WordPress Playground](https://playground.wordpress.net/?blueprint-url=https://raw.githubusercontent.com/bacoords/omnibar-experiments/v0.1.6/blueprints/menu-organizer.json) |
+| Focus Menu | [Launch in WordPress Playground](https://playground.wordpress.net/?blueprint-url=https://raw.githubusercontent.com/bacoords/omnibar-experiments/v0.1.6/blueprints/focus-menu.json) |
+| Editor Menu Trigger | [Launch in WordPress Playground](https://playground.wordpress.net/?blueprint-url=https://raw.githubusercontent.com/bacoords/omnibar-experiments/v0.1.6/blueprints/editor-menu-trigger.json) |
 
 Playground starts a temporary WordPress installation and logs you into wp-admin automatically. Changes disappear when the Playground is reset.
 
