@@ -16,7 +16,7 @@ jobs:
       - name: Build plugin ZIPs
         run: |
           mkdir -p dist
-          for plugin in omnibar-admin-drawer omnibar-admin-menu-groups omnibar-menu-organizer omnibar-focus-menu bc-better-menu-icons; do
+          for plugin in omnibar-admin-drawer omnibar-admin-menu-groups omnibar-menu-organizer omnibar-focus-menu omnibar-editor-menu-trigger bc-better-menu-icons; do
             mkdir -p "dist/$plugin"
             rsync -a --exclude='.DS_Store' --exclude='node_modules' "plugins/$plugin/" "dist/$plugin/"
             ( cd dist && zip -qr "$plugin-${GITHUB_REF_NAME}.zip" "$plugin" )

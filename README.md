@@ -6,10 +6,11 @@ Plugin-based experiments for a more focused and flexible WordPress admin navigat
 
 | Experiment | Playground |
 | --- | --- |
-| Admin Drawer | [Launch in WordPress Playground](https://playground.wordpress.net/?blueprint-url=https://raw.githubusercontent.com/bacoords/omnibar-experiments/v0.1.1/blueprints/admin-drawer.json) |
-| Collapsible Menu Groups | [Launch in WordPress Playground](https://playground.wordpress.net/?blueprint-url=https://raw.githubusercontent.com/bacoords/omnibar-experiments/v0.1.1/blueprints/collapsible-menu-groups.json) |
-| Menu Organizer | [Launch in WordPress Playground](https://playground.wordpress.net/?blueprint-url=https://raw.githubusercontent.com/bacoords/omnibar-experiments/v0.1.1/blueprints/menu-organizer.json) |
-| Focus Menu | [Launch in WordPress Playground](https://playground.wordpress.net/?blueprint-url=https://raw.githubusercontent.com/bacoords/omnibar-experiments/v0.1.1/blueprints/focus-menu.json) |
+| Admin Drawer | [Launch in WordPress Playground](https://playground.wordpress.net/?blueprint-url=https://raw.githubusercontent.com/bacoords/omnibar-experiments/v0.1.2/blueprints/admin-drawer.json) |
+| Collapsible Menu Groups | [Launch in WordPress Playground](https://playground.wordpress.net/?blueprint-url=https://raw.githubusercontent.com/bacoords/omnibar-experiments/v0.1.2/blueprints/collapsible-menu-groups.json) |
+| Menu Organizer | [Launch in WordPress Playground](https://playground.wordpress.net/?blueprint-url=https://raw.githubusercontent.com/bacoords/omnibar-experiments/v0.1.2/blueprints/menu-organizer.json) |
+| Focus Menu | [Launch in WordPress Playground](https://playground.wordpress.net/?blueprint-url=https://raw.githubusercontent.com/bacoords/omnibar-experiments/v0.1.2/blueprints/focus-menu.json) |
+| Editor Menu Trigger | [Launch in WordPress Playground](https://playground.wordpress.net/?blueprint-url=https://raw.githubusercontent.com/bacoords/omnibar-experiments/v0.1.2/blueprints/editor-menu-trigger.json) |
 
 Playground starts a temporary WordPress installation and logs you into wp-admin automatically. Changes disappear when the Playground is reset.
 
@@ -21,11 +22,12 @@ plugins/
   omnibar-admin-menu-groups/  Code-defined collapsible menu groups
   omnibar-menu-organizer/     User-configurable menu ordering and groups
   omnibar-focus-menu/         Contextual one-way focus mode
+  omnibar-editor-menu-trigger/ Editor-header trigger for the shared admin drawer
   bc-better-menu-icons/       Optional @wordpress/icons-based Dashicons replacement
 blueprints/                   Public WordPress Playground configurations
 ```
 
-`omnibar-admin-drawer` is the shared foundation. Each menu experiment depends on it. The Collapsible Menu Groups, Menu Organizer, and Focus Menu plugins are alternative presentations; use one at a time.
+`omnibar-admin-drawer` is the shared foundation. Each menu experiment depends on it. The Collapsible Menu Groups, Menu Organizer, and Focus Menu plugins are alternative presentations; use one at a time. Editor Menu Trigger can be layered onto the drawer with or without one of those menu presentations.
 
 ## Local installation
 

@@ -1,9 +1,9 @@
 {
 	"$schema": "https://playground.wordpress.net/blueprint-schema.json",
 	"meta": {
-		"title": "Omnibar Focus Menu",
+		"title": "Omnibar Editor Menu Trigger",
 		"author": "Brian Coords",
-		"description": "Try a contextual focus mode for the WordPress admin menu."
+		"description": "Try the Omnibar drawer from the Site Editor and block editor header."
 	},
 	"preferredVersions": {
 		"php": "8.3",
@@ -12,6 +12,16 @@
 	"landingPage": "/wp-admin/",
 	"login": true,
 	"steps": [
+		{
+			"step": "installTheme",
+			"themeData": {
+				"resource": "wordpress.org/themes",
+				"slug": "twentytwentyfive"
+			},
+			"options": {
+				"activate": true
+			}
+		},
 		{
 			"step": "installPlugin",
 			"pluginData": {
@@ -47,11 +57,11 @@
 				"url": "https://github.com/bacoords/omnibar-experiments",
 				"ref": "v0.1.2",
 				"refType": "tag",
-				"path": "plugins/omnibar-focus-menu"
+				"path": "plugins/omnibar-editor-menu-trigger"
 			},
 			"options": {
 				"activate": true,
-				"targetFolderName": "omnibar-focus-menu"
+				"targetFolderName": "omnibar-editor-menu-trigger"
 			}
 		}
 	]

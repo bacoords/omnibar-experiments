@@ -17,7 +17,7 @@ jobs:
             {
               "$schema": "https://playground.wordpress.net/blueprint-schema.json",
               "preferredVersions": { "php": "8.3", "wp": "latest" },
-              "landingPage": "/wp-admin/edit.php",
+              "landingPage": "/wp-admin/",
               "login": true,
               "steps": [
                 {
