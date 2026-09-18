@@ -1,0 +1,63 @@
+ul#adminmenu a.wp-has-current-submenu::after,
+ul#adminmenu > li.current > a.current::after {
+	display: none;
+}
+
+#adminmenu a.menu-top .wp-menu-name {
+	padding-top: 10px;
+	padding-bottom: 10px;
+	font-size: 13px;
+	line-height: 18px;
+}
+
+#adminmenu .wp-submenu a,
+#adminmenu .wp-submenu-head {
+	font-size: 13px;
+}
+
+#adminmenu div.wp-menu-image {
+	height: 38px;
+}
+
+#adminmenu div.wp-menu-image::before {
+	padding-top: 9px;
+	padding-bottom: 9px;
+	font-size: 18px;
+}
+
+#adminmenu .wp-submenu a {
+	padding-top: 7px;
+	padding-bottom: 7px;
+}
+
+@media screen and ( min-width: 961px ) {
+	body:not(.folded) #adminmenuback,
+	body:not(.folded) #adminmenuwrap,
+	body:not(.folded) #adminmenu {
+		width: 180px;
+	}
+
+	body:not(.folded) #adminmenu .wp-submenu {
+		width: 180px;
+	}
+
+	body:not(.folded) #adminmenu .wp-not-current-submenu .wp-submenu {
+		left: 180px;
+	}
+
+	body:not(.folded) #wpcontent,
+	body:not(.folded) #wpfooter {
+		margin-left: 180px;
+	}
+
+	html[dir="rtl"] body:not(.folded) #adminmenu .wp-not-current-submenu .wp-submenu {
+		right: 180px;
+		left: auto;
+	}
+
+	html[dir="rtl"] body:not(.folded) #wpcontent,
+	html[dir="rtl"] body:not(.folded) #wpfooter {
+		margin-right: 180px;
+		margin-left: 0;
+	}
+}

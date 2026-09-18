@@ -1,0 +1,57 @@
+{
+	"$schema": "https://playground.wordpress.net/blueprint-schema.json",
+	"meta": {
+		"title": "Omnibar Collapsible Menu Groups",
+		"description": "Try code-defined collapsible groups in the WordPress admin menu."
+	},
+	"preferredVersions": {
+		"php": "8.3",
+		"wp": "latest"
+	},
+	"landingPage": "/wp-admin/edit.php",
+	"login": true,
+	"steps": [
+		{
+			"step": "installPlugin",
+			"pluginData": {
+				"resource": "git:directory",
+				"url": "https://github.com/bacoords/omnibar-experiments",
+				"ref": "main",
+				"refType": "branch",
+				"path": "plugins/omnibar-admin-drawer"
+			},
+			"options": {
+				"activate": true,
+				"targetFolderName": "omnibar-admin-drawer"
+			}
+		},
+		{
+			"step": "installPlugin",
+			"pluginData": {
+				"resource": "git:directory",
+				"url": "https://github.com/bacoords/omnibar-experiments",
+				"ref": "main",
+				"refType": "branch",
+				"path": "plugins/bc-better-menu-icons"
+			},
+			"options": {
+				"activate": true,
+				"targetFolderName": "bc-better-menu-icons"
+			}
+		},
+		{
+			"step": "installPlugin",
+			"pluginData": {
+				"resource": "git:directory",
+				"url": "https://github.com/bacoords/omnibar-experiments",
+				"ref": "main",
+				"refType": "branch",
+				"path": "plugins/omnibar-admin-menu-groups"
+			},
+			"options": {
+				"activate": true,
+				"targetFolderName": "omnibar-admin-menu-groups"
+			}
+		}
+	]
+}

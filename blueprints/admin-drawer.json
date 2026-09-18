@@ -1,0 +1,53 @@
+{
+	"$schema": "https://playground.wordpress.net/blueprint-schema.json",
+	"meta": {
+		"title": "Omnibar Admin Drawer",
+		"description": "Try the Omnibar toolbar and editor drawer in the WordPress Site Editor."
+	},
+	"preferredVersions": {
+		"php": "8.3",
+		"wp": "latest"
+	},
+	"landingPage": "/wp-admin/site-editor.php",
+	"login": true,
+	"steps": [
+		{
+			"step": "installTheme",
+			"themeData": {
+				"resource": "wordpress.org/themes",
+				"slug": "twentytwentyfive"
+			},
+			"options": {
+				"activate": true
+			}
+		},
+		{
+			"step": "installPlugin",
+			"pluginData": {
+				"resource": "git:directory",
+				"url": "https://github.com/bacoords/omnibar-experiments",
+				"ref": "main",
+				"refType": "branch",
+				"path": "plugins/omnibar-admin-drawer"
+			},
+			"options": {
+				"activate": true,
+				"targetFolderName": "omnibar-admin-drawer"
+			}
+		},
+		{
+			"step": "installPlugin",
+			"pluginData": {
+				"resource": "git:directory",
+				"url": "https://github.com/bacoords/omnibar-experiments",
+				"ref": "main",
+				"refType": "branch",
+				"path": "plugins/bc-better-menu-icons"
+			},
+			"options": {
+				"activate": true,
+				"targetFolderName": "bc-better-menu-icons"
+			}
+		}
+	]
+}

@@ -1,0 +1,63 @@
+name: Focus Menu PR Preview
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, edited]
+
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      - uses: WordPress/action-wp-playground-pr-preview@v3
+        with:
+          blueprint: |
+            {
+              "$schema": "https://playground.wordpress.net/blueprint-schema.json",
+              "preferredVersions": { "php": "8.3", "wp": "latest" },
+              "landingPage": "/wp-admin/edit.php",
+              "login": true,
+              "steps": [
+                {
+                  "step": "installPlugin",
+                  "pluginData": {
+                    "resource": "git:directory",
+                    "url": "https://github.com/${{ github.repository }}",
+                    "ref": "${{ github.event.pull_request.head.ref }}",
+                    "refType": "branch",
+                    "path": "plugins/omnibar-admin-drawer"
+                  },
+                  "options": { "activate": true, "targetFolderName": "omnibar-admin-drawer" }
+                },
+                {
+                  "step": "installPlugin",
+                  "pluginData": {
+                    "resource": "git:directory",
+                    "url": "https://github.com/${{ github.repository }}",
+                    "ref": "${{ github.event.pull_request.head.ref }}",
+                    "refType": "branch",
+                    "path": "plugins/bc-better-menu-icons"
+                  },
+                  "options": { "activate": true, "targetFolderName": "bc-better-menu-icons" }
+                },
+                {
+                  "step": "installPlugin",
+                  "pluginData": {
+                    "resource": "git:directory",
+                    "url": "https://github.com/${{ github.repository }}",
+                    "ref": "${{ github.event.pull_request.head.ref }}",
+                    "refType": "branch",
+                    "path": "plugins/omnibar-focus-menu"
+                  },
+                  "options": { "activate": true, "targetFolderName": "omnibar-focus-menu" }
+                }
+              ]
+            }
+          description-template: |
+            ### Test this PR in WordPress Playground
+            {{PLAYGROUND_BUTTON}}
+
+            Opens the Focus Menu configuration with the shared Admin Drawer and Better Menu Icons plugins.
+          github-token: ${{ secrets.GITHUB_TOKEN }}

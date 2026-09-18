@@ -1,0 +1,201 @@
+html.omnibar-admin-drawer-enabled {
+	--omnibar-drawer-width: 160px;
+	--omnibar-drawer-duration: 260ms;
+	--omnibar-drawer-easing: cubic-bezier( 0.2, 0.8, 0.2, 1 );
+	--omnibar-site-editor-frame: 16px;
+	--omnibar-toolbar-height: 32px;
+}
+
+/* The editor hides this markup in fullscreen mode; expose it for the drawer. */
+html.omnibar-admin-drawer-enabled body.js.is-fullscreen-mode #adminmenumain {
+	display: block;
+}
+
+/* The WordPress admin menu replaces the Site Editor's native Design sidebar. */
+html.omnibar-admin-drawer-enabled body.site-editor-php .edit-site-layout__sidebar-region {
+	display: none !important;
+}
+
+html.omnibar-admin-drawer-enabled #wpcontent,
+html.omnibar-admin-drawer-enabled #wpfooter {
+	margin-left: 0 !important;
+}
+
+html[dir="rtl"].omnibar-admin-drawer-enabled #wpcontent,
+html[dir="rtl"].omnibar-admin-drawer-enabled #wpfooter {
+	margin-right: 0 !important;
+}
+
+html.omnibar-admin-drawer-enabled #adminmenuback,
+html.omnibar-admin-drawer-enabled #adminmenuwrap {
+	transform: translateX( calc( -1 * var( --omnibar-drawer-width ) ) );
+	transition: transform var( --omnibar-drawer-duration ) var( --omnibar-drawer-easing );
+	width: var( --omnibar-drawer-width );
+	will-change: transform;
+}
+
+html[dir="rtl"].omnibar-admin-drawer-enabled #adminmenuback,
+html[dir="rtl"].omnibar-admin-drawer-enabled #adminmenuwrap {
+	transform: translateX( var( --omnibar-drawer-width ) );
+}
+
+html.omnibar-admin-drawer-enabled.omnibar-admin-drawer-open #adminmenuback,
+html.omnibar-admin-drawer-enabled.omnibar-admin-drawer-open #adminmenuwrap {
+	transform: translateX( 0 );
+}
+
+html.omnibar-admin-drawer-enabled.omnibar-admin-drawer-open #adminmenuwrap {
+	box-shadow: 12px 0 28px rgb( 0 0 0 / 28% );
+}
+
+html[dir="rtl"].omnibar-admin-drawer-enabled.omnibar-admin-drawer-open #adminmenuwrap {
+	box-shadow: -12px 0 28px rgb( 0 0 0 / 28% );
+}
+
+html.omnibar-admin-drawer-enabled body.site-editor-php #adminmenuwrap {
+	box-shadow: none;
+}
+
+#omnibar-admin-drawer-backdrop {
+	position: fixed;
+	z-index: 9989;
+	top: var( --omnibar-toolbar-height );
+	right: 0;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: auto;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	background: rgb( 0 0 0 / 38% );
+	cursor: default;
+	opacity: 0;
+	transition: opacity var( --omnibar-drawer-duration ) ease;
+}
+
+#omnibar-admin-drawer-backdrop[hidden] {
+	display: none;
+}
+
+html.omnibar-admin-drawer-open #omnibar-admin-drawer-backdrop {
+	opacity: 1;
+}
+
+html.omnibar-admin-drawer-open #wp-admin-bar-wp-logo > .ab-item,
+html.omnibar-admin-drawer-open #wp-admin-bar-wp-logo > .ab-item:focus {
+	background: #1d2327;
+	color: #72aee6;
+}
+
+/*
+ * On desktop, keep the editor's right edge anchored and animate its left edge
+ * alongside the drawer. This narrows the whole editor shell (header, canvas,
+ * and inspector) instead of covering or translating it off-screen.
+ */
+@media screen and ( min-width: 961px ) {
+	html.omnibar-admin-drawer-enabled {
+		--omnibar-drawer-width: 180px;
+	}
+
+	html:not([dir="rtl"]).omnibar-admin-drawer-enabled body:not(.site-editor-php) .interface-interface-skeleton {
+		right: 0;
+		left: 0 !important;
+		transition: left var( --omnibar-drawer-duration ) var( --omnibar-drawer-easing );
+		will-change: left;
+	}
+
+	html:not([dir="rtl"]).omnibar-admin-drawer-enabled.omnibar-admin-drawer-open body:not(.site-editor-php) .interface-interface-skeleton {
+		left: var( --omnibar-drawer-width ) !important;
+	}
+
+	html[dir="rtl"].omnibar-admin-drawer-enabled body:not(.site-editor-php) .interface-interface-skeleton {
+		right: 0 !important;
+		left: 0;
+		transition: right var( --omnibar-drawer-duration ) var( --omnibar-drawer-easing );
+		will-change: right;
+	}
+
+	html[dir="rtl"].omnibar-admin-drawer-enabled.omnibar-admin-drawer-open body:not(.site-editor-php) .interface-interface-skeleton {
+		right: var( --omnibar-drawer-width ) !important;
+	}
+
+	/* WordPress 7.1's Site Editor uses a relative interface skeleton. */
+	html:not([dir="rtl"]).omnibar-admin-drawer-enabled body.site-editor-php .edit-site {
+		right: 0;
+		left: 0 !important;
+		transition: left var( --omnibar-drawer-duration ) var( --omnibar-drawer-easing );
+		will-change: left;
+	}
+
+	html:not([dir="rtl"]).omnibar-admin-drawer-enabled.omnibar-admin-drawer-open body.site-editor-php .edit-site {
+		left: var( --omnibar-drawer-width ) !important;
+	}
+
+	html[dir="rtl"].omnibar-admin-drawer-enabled body.site-editor-php .edit-site {
+		right: 0 !important;
+		left: 0;
+		transition: right var( --omnibar-drawer-duration ) var( --omnibar-drawer-easing );
+		will-change: right;
+	}
+
+	html[dir="rtl"].omnibar-admin-drawer-enabled.omnibar-admin-drawer-open body.site-editor-php .edit-site {
+		right: var( --omnibar-drawer-width ) !important;
+	}
+
+	/*
+	 * Site Editor routes render different first surfaces: some use a canvas,
+	 * some use an area, and some use both. Inset their shared content row once
+	 * so the closed drawer restores the missing edge of the native 16px frame.
+	 */
+	html:not([dir="rtl"]).omnibar-admin-drawer-enabled body.site-editor-php .edit-site-layout__content {
+		box-sizing: border-box;
+		padding-left: var( --omnibar-site-editor-frame );
+		transition: padding-left var( --omnibar-drawer-duration ) var( --omnibar-drawer-easing );
+	}
+
+	html:not([dir="rtl"]).omnibar-admin-drawer-enabled.omnibar-admin-drawer-open body.site-editor-php .edit-site-layout__content {
+		padding-left: 0;
+	}
+
+	/* Full-canvas editing intentionally runs edge to edge. */
+	html:not([dir="rtl"]).omnibar-admin-drawer-enabled body.site-editor-php .edit-site-layout.is-full-canvas .edit-site-layout__content {
+		padding-left: 0;
+	}
+
+	html[dir="rtl"].omnibar-admin-drawer-enabled body.site-editor-php .edit-site-layout__content {
+		box-sizing: border-box;
+		padding-right: var( --omnibar-site-editor-frame );
+		transition: padding-right var( --omnibar-drawer-duration ) var( --omnibar-drawer-easing );
+	}
+
+	html[dir="rtl"].omnibar-admin-drawer-enabled.omnibar-admin-drawer-open body.site-editor-php .edit-site-layout__content {
+		padding-right: 0;
+	}
+
+	html[dir="rtl"].omnibar-admin-drawer-enabled body.site-editor-php .edit-site-layout.is-full-canvas .edit-site-layout__content {
+		padding-right: 0;
+	}
+
+	/* The squeezed layout stays interactive; W or Escape closes the drawer. */
+	#omnibar-admin-drawer-backdrop {
+		display: none !important;
+	}
+}
+
+@media screen and ( max-width: 782px ) {
+	html.omnibar-admin-drawer-enabled {
+		--omnibar-toolbar-height: 46px;
+	}
+}
+
+@media ( prefers-reduced-motion: reduce ) {
+	html.omnibar-admin-drawer-enabled #adminmenuback,
+	html.omnibar-admin-drawer-enabled #adminmenuwrap,
+	html.omnibar-admin-drawer-enabled .interface-interface-skeleton,
+	html.omnibar-admin-drawer-enabled .edit-site,
+	html.omnibar-admin-drawer-enabled .edit-site-layout__content,
+	#omnibar-admin-drawer-backdrop {
+		transition: none;
+	}
+}

@@ -1,0 +1,65 @@
+html.omnibar-admin-toolbar-enabled #adminmenu > li.omnibar-admin-menu-item-relocated {
+	display: none !important;
+}
+
+#wpadminbar .quicklinks > ul > li.omnibar-admin-bar-utility {
+	display: block !important;
+}
+
+#wpadminbar #wp-admin-bar-top-secondary > li.omnibar-admin-bar-utility > .ab-item {
+	box-sizing: border-box;
+	min-width: 36px;
+	padding-right: 8px;
+	padding-left: 8px;
+	text-align: center;
+}
+
+#wpadminbar #wp-admin-bar-command-palette > .ab-item .ab-label {
+	display: none;
+}
+
+#wpadminbar #wp-admin-bar-updates > .ab-item,
+#wpadminbar #wp-admin-bar-comments > .ab-item {
+	position: relative;
+}
+
+#wpadminbar #wp-admin-bar-updates > .ab-item .ab-label,
+#wpadminbar #wp-admin-bar-comments > .ab-item .ab-label {
+	display: block;
+	position: absolute;
+	top: 4px;
+	right: 2px;
+	min-width: 12px;
+	height: 12px;
+	padding: 0 3px;
+	border-radius: 8px;
+	background: #d63638;
+	clip: auto;
+	clip-path: none;
+	color: #fff;
+	font-size: 9px;
+	font-weight: 600;
+	line-height: 12px;
+	overflow: visible;
+	text-align: center;
+	white-space: nowrap;
+}
+
+#wpadminbar #wp-admin-bar-my-account > .ab-item {
+	padding-left: 8px;
+}
+
+#wpadminbar #wp-admin-bar-user-info .omnibar-account-greeting {
+	font-weight: 600;
+}
+
+@media screen and ( max-width: 782px ) {
+	#wpadminbar #wp-admin-bar-top-secondary > li.omnibar-admin-bar-utility > .ab-item {
+		width: 46px;
+		min-width: 46px;
+	}
+
+	#wpadminbar #wp-admin-bar-top-secondary > li.omnibar-admin-bar-utility > .ab-item .ab-icon {
+		width: 30px;
+	}
+}

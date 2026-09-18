@@ -1,0 +1,28 @@
+name: Release plugin ZIPs
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build plugin ZIPs
+        run: |
+          mkdir -p dist
+          for plugin in omnibar-admin-drawer omnibar-admin-menu-groups omnibar-menu-organizer omnibar-focus-menu bc-better-menu-icons; do
+            mkdir -p "dist/$plugin"
+            rsync -a --exclude='.DS_Store' --exclude='node_modules' "plugins/$plugin/" "dist/$plugin/"
+            ( cd dist && zip -qr "$plugin-${GITHUB_REF_NAME}.zip" "$plugin" )
+            rm -rf "dist/$plugin"
+          done
+      - name: Publish GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release create "$GITHUB_REF_NAME" dist/*.zip --generate-notes

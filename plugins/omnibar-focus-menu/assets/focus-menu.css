@@ -1,0 +1,15 @@
+#adminmenu > li.omnibar-focus-menu-hidden {
+	display: none !important;
+}
+
+html.omnibar-focus-menu-showing-all #wpwrap {
+	min-height: var( --omnibar-focus-menu-page-min-height, 100% );
+}
+
+#adminmenu > #menu-dashboard.omnibar-focus-menu-dashboard-back > a.menu-top .wp-menu-image:before {
+	content: "\f341";
+}
+
+html[dir="rtl"] #adminmenu > #menu-dashboard.omnibar-focus-menu-dashboard-back > a.menu-top .wp-menu-image:before {
+	content: "\f345";
+}
