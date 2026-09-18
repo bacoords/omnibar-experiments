@@ -2,6 +2,7 @@
 	"$schema": "https://playground.wordpress.net/blueprint-schema.json",
 	"meta": {
 		"title": "Omnibar Menu Organizer",
+		"author": "Brian Coords",
 		"description": "Try user-configurable ordering and groups in the WordPress admin menu."
 	},
 	"preferredVersions": {

@@ -2,6 +2,7 @@
 	"$schema": "https://playground.wordpress.net/blueprint-schema.json",
 	"meta": {
 		"title": "Omnibar Focus Menu",
+		"author": "Brian Coords",
 		"description": "Try a contextual focus mode for the WordPress admin menu."
 	},
 	"preferredVersions": {
