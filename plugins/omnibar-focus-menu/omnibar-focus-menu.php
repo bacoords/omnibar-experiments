@@ -2,7 +2,7 @@
 /**
  * Plugin Name:       Omnibar Focus Menu
  * Description:       Shows a focused WordPress admin menu when the current screen belongs to a registered menu group.
- * Version:           0.1.3
+ * Version:           0.1.4
  * Requires at least: 6.5
  * Requires PHP:      7.4
  * Requires Plugins:  omnibar-admin-drawer
@@ -12,7 +12,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'OMNIBAR_FOCUS_MENU_VERSION', '0.1.3' );
+define( 'OMNIBAR_FOCUS_MENU_VERSION', '0.1.4' );
 
 /**
  * Register WordPress's default focus groups.
@@ -191,7 +191,12 @@ add_action( 'admin_menu', 'omnibar_focus_menu_prepare_menu', PHP_INT_MAX );
  */
 function omnibar_focus_menu_enqueue_assets() {
 	$asset_url = plugin_dir_url( __FILE__ ) . 'assets/';
-	$groups    = omnibar_get_focus_groups();
+	$groups = omnibar_get_focus_groups();
+	$group_labels = array();
+
+	foreach ( $groups as $group_id => $group ) {
+		$group_labels[ $group_id ] = $group['label'];
+	}
 
 	wp_enqueue_style(
 		'omnibar-focus-menu',
@@ -212,8 +217,10 @@ function omnibar_focus_menu_enqueue_assets() {
 		'omnibar-focus-menu',
 		'OmnibarFocusMenu',
 		array(
-			'groupOrder' => array_keys( $groups ),
-			'labels'     => array(
+			'groupOrder'  => array_keys( $groups ),
+			'groupLabels' => $group_labels,
+			'labels'      => array(
+				'wordpress'   => __( 'WordPress', 'omnibar-focus-menu' ),
 				'showAllMenu' => __( 'Show all menu items', 'omnibar-focus-menu' ),
 			),
 		)

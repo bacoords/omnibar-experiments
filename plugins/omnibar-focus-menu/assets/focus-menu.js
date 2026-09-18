@@ -6,6 +6,7 @@
 	const groupOrder = Array.isArray( config.groupOrder )
 		? config.groupOrder
 		: [];
+	const groupLabels = config.groupLabels || {};
 	const labels = config.labels || {};
 	const groupClassPrefix = 'omnibar-focus-menu-item--';
 	const hiddenClass = 'omnibar-focus-menu-hidden';
@@ -113,6 +114,28 @@
 
 		const dashboardAriaLabel = dashboardLink.getAttribute( 'aria-label' );
 		const dashboardTitle = dashboardLink.getAttribute( 'title' );
+		const dashboardHtml = dashboardLink.innerHTML;
+
+		function renderBreadcrumb() {
+			const breadcrumb = document.createElement( 'span' );
+			const rootLabel = document.createElement( 'span' );
+			const separator = document.createElement( 'span' );
+			const currentLabel = document.createElement( 'span' );
+
+			breadcrumb.className = 'omnibar-focus-menu-breadcrumb';
+			rootLabel.className = 'omnibar-focus-menu-breadcrumb__root';
+			separator.className = 'omnibar-focus-menu-breadcrumb__separator';
+			currentLabel.className = 'omnibar-focus-menu-breadcrumb__current';
+
+			rootLabel.textContent = labels.wordpress || 'WordPress';
+			separator.textContent = '>';
+			separator.setAttribute( 'aria-hidden', 'true' );
+			currentLabel.textContent = groupLabels[ activeGroup ] || activeGroup;
+
+			breadcrumb.append( rootLabel, separator, currentLabel );
+			dashboardLink.replaceChildren( breadcrumb );
+			dashboardLink.classList.add( 'omnibar-focus-menu-breadcrumb-link' );
+		}
 
 		function refreshMenuLayout() {
 			window.cancelAnimationFrame( layoutFrame );
@@ -147,6 +170,7 @@
 
 			if ( isFocused ) {
 				dashboardItem.classList.add( dashboardBackClass );
+				renderBreadcrumb();
 				dashboardLink.setAttribute(
 					'aria-label',
 					labels.showAllMenu || 'Show all menu items'
@@ -157,6 +181,8 @@
 				);
 			} else {
 				dashboardItem.classList.remove( dashboardBackClass );
+				dashboardLink.classList.remove( 'omnibar-focus-menu-breadcrumb-link' );
+				dashboardLink.innerHTML = dashboardHtml;
 
 				if ( dashboardAriaLabel ) {
 					dashboardLink.setAttribute( 'aria-label', dashboardAriaLabel );

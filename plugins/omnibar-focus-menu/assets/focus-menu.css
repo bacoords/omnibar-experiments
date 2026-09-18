@@ -6,10 +6,35 @@ html.omnibar-focus-menu-showing-all #wpwrap {
 	min-height: var( --omnibar-focus-menu-page-min-height, 100% );
 }
 
-#adminmenu > #menu-dashboard.omnibar-focus-menu-dashboard-back > a.menu-top .wp-menu-image:before {
-	content: "\f341";
+#adminmenu > #menu-dashboard.omnibar-focus-menu-dashboard-back > a.menu-top.omnibar-focus-menu-breadcrumb-link {
+	display: flex;
+	align-items: center;
+	box-sizing: border-box;
+	min-height: 34px;
+	padding: 0 12px;
 }
 
-html[dir="rtl"] #adminmenu > #menu-dashboard.omnibar-focus-menu-dashboard-back > a.menu-top .wp-menu-image:before {
-	content: "\f345";
+#adminmenu .omnibar-focus-menu-breadcrumb {
+	display: flex;
+	align-items: center;
+	min-width: 0;
+	font-size: 13px;
+	line-height: 1.4;
+	white-space: nowrap;
+}
+
+#adminmenu .omnibar-focus-menu-breadcrumb__root {
+	color: #c3c4c7;
+}
+
+#adminmenu .omnibar-focus-menu-breadcrumb__separator {
+	margin: 0 6px;
+	color: #8c8f94;
+}
+
+#adminmenu .omnibar-focus-menu-breadcrumb__current {
+	overflow: hidden;
+	color: #fff;
+	font-weight: 600;
+	text-overflow: ellipsis;
 }

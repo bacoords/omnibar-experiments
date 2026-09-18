@@ -6,10 +6,10 @@ Plugin-based experiments for a more focused and flexible WordPress admin navigat
 
 | Experiment | Playground |
 | --- | --- |
-| Admin Drawer | [Launch in WordPress Playground](https://playground.wordpress.net/?blueprint-url=https://raw.githubusercontent.com/bacoords/omnibar-experiments/v0.1.0/blueprints/admin-drawer.json) |
-| Collapsible Menu Groups | [Launch in WordPress Playground](https://playground.wordpress.net/?blueprint-url=https://raw.githubusercontent.com/bacoords/omnibar-experiments/v0.1.0/blueprints/collapsible-menu-groups.json) |
-| Menu Organizer | [Launch in WordPress Playground](https://playground.wordpress.net/?blueprint-url=https://raw.githubusercontent.com/bacoords/omnibar-experiments/v0.1.0/blueprints/menu-organizer.json) |
-| Focus Menu | [Launch in WordPress Playground](https://playground.wordpress.net/?blueprint-url=https://raw.githubusercontent.com/bacoords/omnibar-experiments/v0.1.0/blueprints/focus-menu.json) |
+| Admin Drawer | [Launch in WordPress Playground](https://playground.wordpress.net/?blueprint-url=https://raw.githubusercontent.com/bacoords/omnibar-experiments/v0.1.1/blueprints/admin-drawer.json) |
+| Collapsible Menu Groups | [Launch in WordPress Playground](https://playground.wordpress.net/?blueprint-url=https://raw.githubusercontent.com/bacoords/omnibar-experiments/v0.1.1/blueprints/collapsible-menu-groups.json) |
+| Menu Organizer | [Launch in WordPress Playground](https://playground.wordpress.net/?blueprint-url=https://raw.githubusercontent.com/bacoords/omnibar-experiments/v0.1.1/blueprints/menu-organizer.json) |
+| Focus Menu | [Launch in WordPress Playground](https://playground.wordpress.net/?blueprint-url=https://raw.githubusercontent.com/bacoords/omnibar-experiments/v0.1.1/blueprints/focus-menu.json) |
 
 Playground starts a temporary WordPress installation and logs you into wp-admin automatically. Changes disappear when the Playground is reset.
 
