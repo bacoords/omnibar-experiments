@@ -4,7 +4,7 @@ Tags: admin, toolbar, navigation
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 0.17.1
+Stable tag: 0.17.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -14,7 +14,7 @@ Rearranges the admin toolbar and brings the WordPress admin menu into the block 
 
 In the block editor and Site Editor, the plugin replaces the WordPress logo dropdown with an accessible drawer toggle. The drawer reuses WordPress's existing admin menu markup. On desktop it squeezes the complete editor shell beside the menu, keeping the canvas visible and interactive. At narrower widths it falls back to an overlay with backdrop-click support. The Escape key and reduced-motion preferences are supported in both layouts.
 
-Appearance includes direct links to the Site Editor's Templates, Patterns, Styles, and Navigation screens on every admin page.
+Appearance includes direct links to the Site Editor's Templates, Template Parts, Patterns, Styles, and Navigation screens on every admin page. These direct destinations replace the redundant Editor submenu entry.
 
 On block themes, the classic Pages list redirects to the Site Editor's Pages screen, where Pages receives the active admin-menu state instead of Editor.
 
@@ -31,6 +31,10 @@ The persistent admin sidebar uses a 180-pixel desktop width, increased row spaci
 The plugin also provides the shared `omnibar_register_focus_group()` API used by the alternative menu-group experiments in this repository.
 
 == Changelog ==
+
+= 0.17.2 =
+
+* Add Template Parts beneath Appearance and remove the redundant Editor submenu entry.
 
 = 0.17.1 =
 

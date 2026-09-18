@@ -27,7 +27,7 @@
 			"pluginData": {
 				"resource": "git:directory",
 				"url": "https://github.com/bacoords/omnibar-experiments",
-				"ref": "v0.1.6",
+				"ref": "v0.1.7",
 				"refType": "tag",
 				"path": "plugins/omnibar-admin-drawer"
 			},
@@ -41,7 +41,7 @@
 			"pluginData": {
 				"resource": "git:directory",
 				"url": "https://github.com/bacoords/omnibar-experiments",
-				"ref": "v0.1.6",
+				"ref": "v0.1.7",
 				"refType": "tag",
 				"path": "plugins/bc-better-menu-icons"
 			},

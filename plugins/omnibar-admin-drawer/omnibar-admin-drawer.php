@@ -2,7 +2,7 @@
 /**
  * Plugin Name:       Omnibar Admin Bar & Editor Drawer
  * Description:       Rearranges the admin toolbar and brings the WordPress admin menu into the block and Site Editors.
- * Version:           0.17.1
+ * Version:           0.17.2
  * Requires at least: 6.5
  * Requires PHP:      7.4
  * Author:            Brian Coords
@@ -11,7 +11,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'OMNIBAR_ADMIN_DRAWER_VERSION', '0.17.1' );
+define( 'OMNIBAR_ADMIN_DRAWER_VERSION', '0.17.2' );
 
 /**
  * Register a code-defined admin-menu focus group.
@@ -399,28 +399,46 @@ function omnibar_admin_register_site_editor_appearance_destinations() {
 
 	$destinations = array(
 		array( __( 'Templates', 'omnibar-admin-drawer' ), '/template' ),
+		array(
+			__( 'Template Parts', 'omnibar-admin-drawer' ),
+			'/pattern',
+			array( 'postType' => 'wp_template_part' ),
+		),
 		array( __( 'Patterns', 'omnibar-admin-drawer' ), '/pattern' ),
 		array( __( 'Styles', 'omnibar-admin-drawer' ), '/styles' ),
 		array( __( 'Navigation', 'omnibar-admin-drawer' ), '/navigation' ),
 	);
-	$appearance   = array_values( $submenu['themes.php'] );
+	$appearance   = array();
 	$existing     = array();
-	$insert_at    = count( $appearance );
+	$insert_at    = null;
 
-	foreach ( $appearance as $index => $item ) {
+	foreach ( array_values( $submenu['themes.php'] ) as $item ) {
 		if ( isset( $item[2] ) ) {
-			$existing[] = $item[2];
-
 			if ( 'site-editor.php' === $item[2] ) {
-				$insert_at = $index + 1;
+				$insert_at = count( $appearance );
+				continue;
 			}
+
+			$existing[] = $item[2];
 		}
+
+		$appearance[] = $item;
+	}
+
+	if ( null === $insert_at ) {
+		$insert_at = count( $appearance );
 	}
 
 	$new_items = array();
 
 	foreach ( $destinations as $destination ) {
-		$menu_slug = add_query_arg( 'p', $destination[1], 'site-editor.php' );
+		$query_args = array( 'p' => $destination[1] );
+
+		if ( isset( $destination[2] ) ) {
+			$query_args = array_merge( $query_args, $destination[2] );
+		}
+
+		$menu_slug = add_query_arg( $query_args, 'site-editor.php' );
 
 		if ( in_array( $menu_slug, $existing, true ) ) {
 			continue;
@@ -435,8 +453,9 @@ function omnibar_admin_register_site_editor_appearance_destinations() {
 
 	if ( $new_items ) {
 		array_splice( $appearance, $insert_at, 0, $new_items );
-		$submenu['themes.php'] = $appearance;
 	}
+
+	$submenu['themes.php'] = $appearance;
 }
 add_action( 'admin_menu', 'omnibar_admin_register_site_editor_appearance_destinations', PHP_INT_MAX - 2 );
 
