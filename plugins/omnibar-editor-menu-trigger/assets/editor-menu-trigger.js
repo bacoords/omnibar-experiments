@@ -3,7 +3,6 @@
 
 	const root = document.documentElement;
 	const settings = window.OmnibarEditorMenuTrigger || {};
-	const enabledClass = 'omnibar-editor-menu-trigger-enabled';
 	const slotClass = 'omnibar-editor-menu-trigger-slot';
 	const fallbackSlotClass = 'omnibar-editor-menu-trigger-fallback';
 	const fallbackActiveClass = 'omnibar-editor-menu-trigger-fallback-active';
@@ -36,13 +35,11 @@
 	}
 
 	function initializeEditorMenuTrigger() {
-		const baseToggle = document.getElementById( 'omnibar-admin-drawer-toggle' );
+		const controller = window.OmnibarAdminDrawerController;
 
-		if ( ! baseToggle || ! document.body ) {
+		if ( ! controller || ! document.body ) {
 			return;
 		}
-
-		root.classList.add( enabledClass );
 
 		function updateButtonState() {
 			const button = document.querySelector( toggleSelector );
@@ -51,7 +48,7 @@
 				return;
 			}
 
-			const isOpen = baseToggle.getAttribute( 'aria-expanded' ) === 'true';
+			const isOpen = controller.isOpen();
 			const label = isOpen
 				? settings.closeLabel || 'Close WordPress menu'
 				: settings.openLabel || 'Open WordPress menu';
@@ -72,7 +69,7 @@
 			button.addEventListener( 'click', ( event ) => {
 				event.preventDefault();
 				event.stopPropagation();
-				baseToggle.click();
+				controller.toggle();
 				window.requestAnimationFrame( updateButtonState );
 			} );
 
@@ -84,6 +81,9 @@
 				slot.appendChild( createToggle() );
 			}
 
+			controller.setReturnFocusElement?.(
+				slot.querySelector( `:scope > ${ toggleSelector }` )
+			);
 			updateButtonState();
 		}
 
@@ -143,16 +143,14 @@
 		}
 
 		const editorObserver = new MutationObserver( scheduleToggle );
-		const stateObserver = new MutationObserver( updateButtonState );
-
 		editorObserver.observe( document.body, {
 			childList: true,
 			subtree: true,
 		} );
-		stateObserver.observe( baseToggle, {
-			attributes: true,
-			attributeFilter: [ 'aria-expanded' ],
-		} );
+		document.addEventListener(
+			'omnibar-admin-drawer-state-change',
+			updateButtonState
+		);
 
 		ensureToggle();
 	}

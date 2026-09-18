@@ -1,7 +1,3 @@
-html.omnibar-editor-menu-trigger-enabled #wp-admin-bar-wp-logo {
-	display: none !important;
-}
-
 .editor-header__back-button.omnibar-editor-menu-trigger-slot {
 	display: flex;
 	align-items: center;

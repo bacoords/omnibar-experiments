@@ -2,7 +2,7 @@
 /**
  * Plugin Name:       Omnibar Admin Bar & Editor Drawer
  * Description:       Rearranges the admin toolbar and brings the WordPress admin menu into the block and Site Editors.
- * Version:           0.17.0
+ * Version:           0.17.1
  * Requires at least: 6.5
  * Requires PHP:      7.4
  * Author:            Brian Coords
@@ -11,7 +11,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'OMNIBAR_ADMIN_DRAWER_VERSION', '0.17.0' );
+define( 'OMNIBAR_ADMIN_DRAWER_VERSION', '0.17.1' );
 
 /**
  * Register a code-defined admin-menu focus group.
@@ -305,12 +305,27 @@ function omnibar_admin_use_pages_submenu_file( $submenu_file ) {
 add_filter( 'submenu_file', 'omnibar_admin_use_pages_submenu_file', PHP_INT_MAX );
 
 /**
+ * Determine whether the WordPress logo should control the drawer.
+ *
+ * Companion experiments can provide another trigger while leaving the Core
+ * WordPress logo and its dropdown unchanged.
+ *
+ * @return bool Whether to use the WordPress logo as the drawer toggle.
+ */
+function omnibar_admin_drawer_should_use_wp_logo_toggle() {
+	return (bool) apply_filters( 'omnibar_admin_drawer_use_wp_logo_toggle', true );
+}
+
+/**
  * Replace the WordPress logo dropdown with the drawer toggle.
  *
  * @param WP_Admin_Bar $wp_admin_bar Admin toolbar instance.
  */
 function omnibar_admin_drawer_customize_toolbar( $wp_admin_bar ) {
-	if ( ! omnibar_admin_drawer_should_enable() ) {
+	if (
+		! omnibar_admin_drawer_should_enable() ||
+		! omnibar_admin_drawer_should_use_wp_logo_toggle()
+	) {
 		return;
 	}
 
@@ -468,9 +483,10 @@ function omnibar_admin_drawer_enqueue_assets() {
 		'omnibar-admin-drawer',
 		'OmnibarAdminDrawer',
 		array(
-			'openLabel'  => __( 'Open admin menu', 'omnibar-admin-drawer' ),
-			'closeLabel' => __( 'Close admin menu', 'omnibar-admin-drawer' ),
-			'startOpen'  => omnibar_admin_drawer_is_site_editor(),
+			'openLabel'       => __( 'Open admin menu', 'omnibar-admin-drawer' ),
+			'closeLabel'      => __( 'Close admin menu', 'omnibar-admin-drawer' ),
+			'startOpen'       => omnibar_admin_drawer_is_site_editor(),
+			'useWpLogoToggle' => omnibar_admin_drawer_should_use_wp_logo_toggle(),
 		)
 	);
 }

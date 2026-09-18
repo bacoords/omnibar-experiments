@@ -4,7 +4,7 @@ Tags: admin, toolbar, navigation
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 0.17.0
+Stable tag: 0.17.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -18,7 +18,7 @@ Appearance includes direct links to the Site Editor's Templates, Patterns, Style
 
 On block themes, the classic Pages list redirects to the Site Editor's Pages screen, where Pages receives the active admin-menu state instead of Editor.
 
-The drawer starts open in the Site Editor and closed in post and page editors. It does not store its state, and the WordPress logo continues to toggle it in either direction. The Site Editor's native Design sidebar is hidden so it never competes with the admin menu.
+The drawer starts open in the Site Editor and closed in post and page editors. It does not store its state, and the WordPress logo continues to toggle it in either direction unless a companion experiment supplies a different trigger. The Site Editor's native Design sidebar is hidden so it never competes with the admin menu.
 
 Conventional wp-admin screens retain the persistent admin menu. The toolbar keeps its native actions while rearranging the selected utilities described below.
 
@@ -31,6 +31,10 @@ The persistent admin sidebar uses a 180-pixel desktop width, increased row spaci
 The plugin also provides the shared `omnibar_register_focus_group()` API used by the alternative menu-group experiments in this repository.
 
 == Changelog ==
+
+= 0.17.1 =
+
+* Allow companion experiments to control the drawer while retaining the default WordPress logo and dropdown.
 
 = 0.17.0 =
 

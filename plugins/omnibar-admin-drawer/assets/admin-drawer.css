@@ -82,8 +82,8 @@ html.omnibar-admin-drawer-open #omnibar-admin-drawer-backdrop {
 	opacity: 1;
 }
 
-html.omnibar-admin-drawer-open #wp-admin-bar-wp-logo > .ab-item,
-html.omnibar-admin-drawer-open #wp-admin-bar-wp-logo > .ab-item:focus {
+html.omnibar-admin-drawer-wp-logo-toggle.omnibar-admin-drawer-open #wp-admin-bar-wp-logo > .ab-item,
+html.omnibar-admin-drawer-wp-logo-toggle.omnibar-admin-drawer-open #wp-admin-bar-wp-logo > .ab-item:focus {
 	background: #1d2327;
 	color: #72aee6;
 }
