@@ -11,7 +11,7 @@
 	const toggleSelector = `.${ toggleClass }`;
 	let renderFrame = 0;
 
-	function createMenuIcon() {
+	function createDrawerLeftIcon() {
 		const namespace = 'http://www.w3.org/2000/svg';
 		const icon = document.createElementNS( namespace, 'svg' );
 		const path = document.createElementNS( namespace, 'path' );
@@ -19,13 +19,17 @@
 		icon.setAttribute( 'viewBox', '0 0 24 24' );
 		icon.setAttribute( 'width', '24' );
 		icon.setAttribute( 'height', '24' );
-		icon.setAttribute( 'fill', 'currentColor' );
+		icon.setAttribute( 'fill', 'none' );
+		icon.style.fill = 'none';
+		icon.setAttribute( 'stroke', 'currentColor' );
+		icon.setAttribute( 'stroke-width', '1.5' );
 		icon.setAttribute( 'aria-hidden', 'true' );
 		icon.setAttribute( 'focusable', 'false' );
 		path.setAttribute(
 			'd',
-			'M4 7.5h16V6H4v1.5Zm0 5.25h16v-1.5H4v1.5ZM4 18h16v-1.5H4V18Z'
+			'M9.75 4.75H6C5.30964 4.75 4.75 5.30964 4.75 6V18C4.75 18.6904 5.30964 19.25 6 19.25H9.75M9.75 4.75H18C18.6904 4.75 19.25 5.30964 19.25 6V18C19.25 18.6904 18.6904 19.25 18 19.25H9.75M9.75 4.75V19.25'
 		);
+		path.setAttribute( 'vector-effect', 'non-scaling-stroke' );
 		icon.appendChild( path );
 
 		return icon;
@@ -64,7 +68,7 @@
 			button.type = 'button';
 			button.className = `components-button is-compact has-icon ${ toggleClass }`;
 			button.setAttribute( 'aria-controls', 'adminmenumain' );
-			button.appendChild( createMenuIcon() );
+			button.appendChild( createDrawerLeftIcon() );
 			button.addEventListener( 'click', ( event ) => {
 				event.preventDefault();
 				event.stopPropagation();

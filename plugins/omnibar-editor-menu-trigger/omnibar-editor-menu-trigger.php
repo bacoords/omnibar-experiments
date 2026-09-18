@@ -2,7 +2,7 @@
 /**
  * Plugin Name:       Omnibar Editor Menu Trigger
  * Description:       Moves the Omnibar admin-drawer trigger into the editor header's back-button position.
- * Version:           0.1.0
+ * Version:           0.1.1
  * Requires at least: 6.5
  * Requires PHP:      7.4
  * Requires Plugins:  omnibar-admin-drawer
@@ -12,7 +12,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'OMNIBAR_EDITOR_MENU_TRIGGER_VERSION', '0.1.0' );
+define( 'OMNIBAR_EDITOR_MENU_TRIGGER_VERSION', '0.1.1' );
 
 /**
  * Load the alternative drawer trigger on block and Site Editor screens.

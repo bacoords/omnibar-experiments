@@ -5,7 +5,7 @@ Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 7.4
 Requires Plugins: omnibar-admin-drawer
-Stable tag: 0.1.0
+Stable tag: 0.1.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -18,6 +18,10 @@ This experiment keeps the shared Omnibar admin drawer while replacing the editor
 The Site Editor's existing back-button position is reused. On editor screens that do not render that position, the plugin creates a matching control, including a temporary top-left control on the Site Editor landing screen. The control follows the drawer's open state and remains available when Gutenberg re-renders the header.
 
 == Changelog ==
+
+= 0.1.1 =
+
+* Use Gutenberg's drawerLeft icon for the editor menu trigger.
 
 = 0.1.0 =
 
